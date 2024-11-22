@@ -61,21 +61,12 @@ jobs:
             docker push guinascimento/magalu
 
         - name: Set up SSH key
-          run: |
-            # Create the .ssh directory
-            mkdir -p ~/.ssh
-
-            # Write the private key from GitHub secrets into a file
-            echo "$LIGHTSAIL_SSH_KEY" > ~/.ssh/lightsail_key.pem
-
-            # Set the right permissions for the private key
-            chmod 400 ~/.ssh/lightsail_key.pem
-
-            # Add the Lightsail instance's IP to known hosts to avoid warnings
-            ssh-keyscan -H 34.205.71.232 >> ~/.ssh/known_hosts
-
-            # Verify the known hosts (for debugging purposes)
-            cat ~/.ssh/known_hosts
+          uses: appleboy/ssh-action@v0.1.1
+          with:
+            host: 34.205.71.232           # Replace with your Lightsail instance IP
+            username: ec2-user                    # Default user for Lightsail (or your custom user)
+            key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # Reference the SSH key stored in GitHub secrets
+            port: 22
 
         - name: Deploy to AWS Lightsail
           uses: appleboy/ssh-action@v0.1.1
