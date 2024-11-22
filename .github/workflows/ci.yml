@@ -64,7 +64,7 @@ jobs:
           uses: appleboy/ssh-action@v0.1.1
           with:
             host: ${{ secrets.LIGHTSAIL_IP }}  # Public IP of your Lightsail instance
-            username: ubuntu  # Use 'ubuntu' for default Lightsail images
+            username: ec2-user  # Use 'ubuntu' for default Lightsail images
             key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # The SSH private key added as GitHub secret
             script: |
               # Pull the latest Docker image from Docker Hub
