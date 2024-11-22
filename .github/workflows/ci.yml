@@ -69,10 +69,18 @@ jobs:
             port: 22
 
         - name: Deploy to AWS Lightsail
-          uses: appleboy/ssh-action@v0.1.1
+          # uses: appleboy/ssh-action@v0.1.1
+          # with:
+          #   host: ${{ secrets.LIGHTSAIL_IP }}  # Public IP of your Lightsail instance
+          #   username: ubuntu  # Use 'ubuntu' for default Lightsail images
+          #   key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # The SSH private key added as GitHub secret
+          #   script: |
+          #     ssh -v -i ~/.ssh/lightsail_key.pem ec2-user@34.205.71.232 'echo "Successfully connected to Lightsail"'
+          uses: fifsky/ssh-action@master
           with:
-            host: ${{ secrets.LIGHTSAIL_IP }}  # Public IP of your Lightsail instance
-            username: ubuntu  # Use 'ubuntu' for default Lightsail images
-            key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # The SSH private key added as GitHub secret
-            script: |
-              ssh -v -i ~/.ssh/lightsail_key.pem ec2-user@34.205.71.232 'echo "Successfully connected to Lightsail"'
+            command: |
+              cd /tmp
+              ls -a
+            host: 34.205.71.232
+            user: ec2-user
+            key: ${{ secrets.PRIVATE_KEY}}
