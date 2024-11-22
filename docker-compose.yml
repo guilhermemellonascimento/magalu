@@ -12,6 +12,11 @@ services:
     networks:
       - myapp_network
 
+  redis:
+    image: redis:7.0
+    ports:
+      - "6379:6379"
+
 volumes:
   sqlite_data:
     driver: local
