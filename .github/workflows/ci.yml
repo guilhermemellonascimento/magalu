@@ -54,34 +54,19 @@ jobs:
 
         - name: Build Docker image
           run: |
-            docker build -t guinascimento/magalu .
+            docker build -t ${{ secrets.DOCKER_IMAGE }} .
 
         - name: Push Docker image to Docker Hub (or ECR)
           run: |
-            docker push guinascimento/magalu
-
-        # - name: Set up SSH key
-        #   uses: appleboy/ssh-action@v0.1.1
-        #   with:
-        #     host: 34.205.71.232           # Replace with your Lightsail instance IP
-        #     username: ec2-user                    # Default user for Lightsail (or your custom user)
-        #     key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # Reference the SSH key stored in GitHub secrets
-        #     port: 22 
+            docker push ${{ secrets.DOCKER_IMAGE }}
 
         - name: Deploy to AWS Lightsail
-          # uses: appleboy/ssh-action@v0.1.1
-          # with:
-          #   host: ${{ secrets.LIGHTSAIL_IP }}  # Public IP of your Lightsail instance
-          #   username: ubuntu  # Use 'ubuntu' for default Lightsail images
-          #   key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # The SSH private key added as GitHub secret
-          #   script: |
-          #     ssh -v -i ~/.ssh/lightsail_key.pem ec2-user@34.205.71.232 'echo "Successfully connected to Lightsail"'
           uses: fifsky/ssh-action@master
           with:
             command: |
-              docker pull guinascimento/magalu:latest
+              docker pull ${{ secrets.DOCKER_IMAGE }}:latest
               docker ps -a --format '{{.Names}}' | grep -q rails-app && docker stop rails-app && docker rm rails-app
-              docker run -d --name rails-app -p 3000:3000 guinascimento/magalu:latest
-            host: 34.205.71.232
-            user: ec2-user
+              docker run -d --name rails-app -p 3000:3000 ${{ secrets.DOCKER_IMAGE }}:latest
+            host: ${{ secrets.LIGHTSAIL_IP }}
+            user: ${{ secrets.LIGHTSAIL_USER }}
             key: ${{ secrets.PRIVATE_KEY}}
