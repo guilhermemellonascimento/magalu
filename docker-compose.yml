@@ -11,13 +11,10 @@ services:
       - redis
     environment:
       - RAILS_ENV=production
-      - REDIS_URL=redis://redis:6379/0
     networks:
       - myapp_network
   redis:
-    image: redis:7.0
-    ports:
-      - "6379:6379"
+    image: redis:latest
 
 volumes:
   sqlite_data:
