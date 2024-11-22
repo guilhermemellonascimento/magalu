@@ -69,36 +69,10 @@ jobs:
             port: 22
 
         - name: Deploy to AWS Lightsail
-          uses: appleboy/ssh-action@v1.2.0
+          uses: appleboy/ssh-action@v0.1.1
           with:
             host: ${{ secrets.LIGHTSAIL_IP }}  # Public IP of your Lightsail instance
-            username: ec2-user  # Use 'ubuntu' for default Lightsail images
-            key: -----BEGIN RSA PRIVATE KEY-----
-                  MIIEpAIBAAKCAQEAyhAuG40bVP6Q/DwjrZmgwftAqkeUH+d3rULN9GIIoisN+Roc
-                  7EddcDpDo03K4+VNZbp6U1b8xAnFZYlZL2prZgfTOpv1S0lcLNEdF/FtXiNgWM3/
-                  EL2MYp5+5eU1pFc1+h/bTNFTQiqDz2aMjpsdE0jOxowlqPF7kbKGlEmap/1z2sY+
-                  +oM9mvXfICXZUp5d2VcA+bkr88X2GzgiVeMX+7qM776prmGZMkJUs3feeQwWPmQv
-                  llI1ZPo2qMO74eH2OX1JoNyIrVKH738cTW1dGJOlG0KrlPzRfQIwM8vejru+uEG5
-                  ayyL2VI2sKgBpEcnjl8x75CbE4Cz3EVgMit11QIDAQABAoIBAQDFhMF9fxbro5iY
-                  aDU8GoOxe2h/y055TWuIO1hV/oqP82RKT4NcWHp3HQ1HEeE1ms1olrvCwbJ980s5
-                  cOR0XCO17gpGLXO/b2uiB5vX7tFJB23EAUHG3HLhaCuFkOQ5zGJgKUnWsnwfnq2Q
-                  TJ8zO19VnYM7RH3/wmZXStsRE04RzQv5qyrE9d3evsGXP4af5largqUHT84xH+EM
-                  9yUoc0bZXMQHO4fxYba/2fVrAaFOHrjXQEJc6mjBXN7uM/8aCAubCFQ4Ou6IiVAv
-                  CS8hkEzAALd7iAfJYvXyiE62HQTqjl25kmvhnc8rw4lsGNPJ47JbnqPrvIIdHLkw
-                  HD1wPAeBAoGBAOfi39askxJjP5066gSbhT1QQbZrOkr0EVJZKvKU9v9UU6UjsNRU
-                  PigDF1uWCK41j2kxRpC8MQ7eU23IMFHwL2e4IBYEys2EEbOVfm2RW3NFpbgE8D2I
-                  5i6mdjHofRSvTWQgelcYhKQw4pUaS0lpfLsQAGjo52RLWN1UC/3x4gKhAoGBAN8T
-                  YFyUWKeWuExNGl5NVZv5fcMiVKynl5JT6kbCtO3t7hpRwZVxgDXVGQJ8Y3+wwFh0
-                  YbP6g7gB97U1VCWbdz2RlZjaDDKOyCtdUWP0CYMr+dMQVnwPTFudPP15Keij43gv
-                  GvS8Dq9BU6RapeFNZwdWAIMLn1US1Ky3y612k1q1AoGAT13QnSpeADomCMukU0Vj
-                  mjPA+g3DWuokj5njYDnqPEQBiREpMdNPnuRH91nnyLCeUDPEYj93Tw57YaTWHQVn
-                  REm5+a9UNnlQkbXGGvxYX6Dj8pMGIxmbJzZkV/qp7Q1/IJkZJnxG0efFdaEVSaAo
-                  R+JXMZEdua8sUDy3CgjjAWECgYBobrDJBqXuZzAGgH4cscWnTIikxrivT5I07dYa
-                  pGKBlMbISYgAB2/HQ+j+ce8+wyd5AZsP3/K0PS+TBNFM/dg32aUYNtRJAvEQ5BIL
-                  Yh7l6rt9JQPn9l1/8j+wRn3pLHh8Nkk/U57oSwP2SH2p2Uuncoqwzssbz8ICzdSr
-                  c3yOlQKBgQDNq/m8/WAcyiyq+5GXpBJNq1mboGw3bHQXBmnFaQK4d0j7/yyw6dAy
-                  nGSDTbAtDvwPfmhGTxxnAdagsZKJTpdgSlO2rx4L86PqCJ0Q1r0fHstyymXf3YG/
-                  x4nhchksSZadPcEXyIvqKI9kOnwZTJhUyCBlTCKIGk6UYjPzqsEuvA==
-                  -----END RSA PRIVATE KEY-----
+            username: ubuntu  # Use 'ubuntu' for default Lightsail images
+            key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # The SSH private key added as GitHub secret
             script: |
               ssh -v -i ~/.ssh/lightsail_key.pem ec2-user@34.205.71.232 'echo "Successfully connected to Lightsail"'
