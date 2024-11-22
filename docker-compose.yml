@@ -7,21 +7,14 @@ services:
       - ".:/myapp"
     ports:
       - "3000:3000"
-    depends_on:
-      - redis
     environment:
       - RAILS_ENV=production
     networks:
       - myapp_network
-  redis:
-    image: redis:alpine
-    volumes:
-      - redis-data:/data
 
 volumes:
   sqlite_data:
     driver: local
-  redis-data:
 
 networks:
   myapp_network:
