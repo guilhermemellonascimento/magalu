@@ -25,4 +25,4 @@ RUN chmod 777 /tmp
 EXPOSE 3000
 
 # Set the default command to run the Rails server
-CMD ["sh", "-c", "rails db:prepare && rails s -b 0.0.0.0 && bundle exec sidekiq"]
+CMD ["sh", "-c", "rails db:prepare && rails s -b 0.0.0.0 & bundle exec sidekiq"]
