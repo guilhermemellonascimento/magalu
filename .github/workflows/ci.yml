@@ -54,8 +54,8 @@ jobs:
 
         - name: Build Docker image
           run: |
-            docker build -t YOUR_USERNAME/YOUR_APP_NAME .
+            docker build -t guinascimento/magalu .
 
         - name: Push Docker image to Docker Hub (or ECR)
           run: |
-            docker push YOUR_USERNAME/YOUR_APP_NAME
+            docker push guinascimento/YOUR_APP_NAME
