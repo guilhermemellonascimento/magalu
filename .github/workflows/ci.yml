@@ -66,7 +66,7 @@ jobs:
         #     host: 34.205.71.232           # Replace with your Lightsail instance IP
         #     username: ec2-user                    # Default user for Lightsail (or your custom user)
         #     key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # Reference the SSH key stored in GitHub secrets
-        #     port: 22
+        #     port: 22 
 
         - name: Deploy to AWS Lightsail
           # uses: appleboy/ssh-action@v0.1.1
