@@ -80,8 +80,7 @@ jobs:
           with:
             command: |
               docker pull guinascimento/magalu:latest
-              docker stop rails-app || true
-              docker rm rails-app || true
+              docker ps -a --format '{{.Names}}' | grep -q rails-app && docker stop rails-app && docker rm rails-app
             host: 34.205.71.232
             user: ec2-user
             key: ${{ secrets.PRIVATE_KEY}}
