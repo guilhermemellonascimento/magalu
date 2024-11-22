@@ -21,7 +21,7 @@ COPY . .
 # Expose port 3000 for Rails
 EXPOSE 3000
 
-COPY /bin/docker-entrypoint.sh /usr/bin/entrypoint.sh
+COPY ./bin/docker-entrypoint /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["sh", "/usr/bin/entrypoint.sh"]
 
