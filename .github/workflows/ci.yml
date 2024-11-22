@@ -78,7 +78,7 @@ jobs:
           #     ssh -v -i ~/.ssh/lightsail_key.pem ec2-user@34.205.71.232 'echo "Successfully connected to Lightsail"'
           uses: fifsky/ssh-action@master
           with:
-            script: |
+            command: |
               docker pull guinascimento/magalu:latest
             host: 34.205.71.232
             user: ec2-user
