@@ -19,7 +19,7 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - app_network
+      - myapp_network
 
 volumes:
   sqlite_data:
