@@ -74,3 +74,5 @@ jobs:
             host: ${{ secrets.LIGHTSAIL_IP }}  # Public IP of your Lightsail instance
             username: ec2-user  # Use 'ubuntu' for default Lightsail images
             key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # The SSH private key added as GitHub secret
+            script: |
+              ssh -v -i ~/.ssh/lightsail_key.pem ec2-user@34.205.71.232 'echo "Successfully connected to Lightsail"'
