@@ -18,6 +18,9 @@ RUN bundle install
 # Copy the rest of the application files
 COPY . .
 
+# Set permissions for /tmp directory
+RUN chmod 777 /tmp
+
 # Expose port 3000 for Rails
 EXPOSE 3000
 
