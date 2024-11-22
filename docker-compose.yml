@@ -13,6 +13,7 @@ services:
       - RAILS_ENV=production
     networks:
       - myapp_network
+
   redis:
     image: redis:latest
 
