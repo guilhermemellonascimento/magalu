@@ -58,4 +58,4 @@ jobs:
 
         - name: Push Docker image to Docker Hub (or ECR)
           run: |
-            docker push guinascimento/YOUR_APP_NAME
+            docker push guinascimento/magalu
