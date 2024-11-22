@@ -59,20 +59,3 @@ jobs:
         - name: Push Docker image to Docker Hub (or ECR)
           run: |
             docker push YOUR_USERNAME/YOUR_APP_NAME
-
-        - name: SSH into Lightsail and Deploy Docker container
-          uses: appleboy/ssh-action@v0.1.1
-          with:
-            host: ${{ secrets.LIGHTSAIL_IP }}
-            username: ${{ secrets.LIGHTSAIL_USERNAME }}
-            key: ${{ secrets.LIGHTSAIL_SSH_KEY }}
-            script: |
-              # Pull the latest Docker image from Docker Hub (or ECR)
-              docker pull YOUR_USERNAME/YOUR_APP_NAME:latest
-
-              # Stop the currently running container (if any)
-              docker stop rails-app || true
-              docker rm rails-app || true
-
-              # Run the new Docker container
-              docker run -d --name rails-app -p 80:3000 YOUR_USERNAME/YOUR_APP_NAME:latest
