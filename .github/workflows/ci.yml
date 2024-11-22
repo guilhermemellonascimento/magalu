@@ -64,6 +64,7 @@ jobs:
           run: |
             mkdir -p ~/.ssh
             echo "$LIGHTSAIL_SSH_KEY" > ~/.ssh/lightsail_key.pem
+            echo $ {{ LIGHTSAIL_SSH_KEY }}
             chmod 400 ~/.ssh/lightsail_key.pem
 
         - name: Deploy to AWS Lightsail
@@ -72,13 +73,3 @@ jobs:
             host: ${{ secrets.LIGHTSAIL_IP }}  # Public IP of your Lightsail instance
             username: ec2-user  # Use 'ubuntu' for default Lightsail images
             key: ${{ secrets.LIGHTSAIL_SSH_KEY }}  # The SSH private key added as GitHub secret
-            script: |
-              # Pull the latest Docker image from Docker Hub
-              docker pull guinascimento/magalu:latest
-
-              # Stop and remove the existing container
-              docker stop rails-app || true
-              docker rm rails-app || true
-
-              # Run the new Docker container
-              docker run -d --name rails-app -p 80:3000 guinascimento/magalu:latest
