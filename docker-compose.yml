@@ -14,13 +14,6 @@ services:
     networks:
       - myapp_network
 
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-    networks:
-      - myapp_network
-
 volumes:
   sqlite_data:
     driver: local

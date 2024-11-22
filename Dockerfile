@@ -6,7 +6,6 @@ RUN apt-get update -qq && apt-get install -y \
   nodejs \
   yarn \
   sqlite3 \
-  redis-server \
   && rm -rf /var/lib/apt/lists/*
 
 # Set up the working directory
