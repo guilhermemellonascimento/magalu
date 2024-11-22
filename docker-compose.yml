@@ -13,10 +13,15 @@ services:
       - RAILS_ENV=production
     networks:
       - myapp_network
+  redis:
+    image: redis:alpine
+    volumes:
+      - redis-data:/data
 
 volumes:
   sqlite_data:
     driver: local
+  redis-data:
 
 networks:
   myapp_network:
