@@ -90,3 +90,8 @@ Shoulda::Matchers.configure do |config|
     with.library :rails
   end
 end
+
+SimpleCov.start 'rails' do
+  # Exclude ApplicationMailer from code coverage
+  add_filter 'app/mailers'
+end

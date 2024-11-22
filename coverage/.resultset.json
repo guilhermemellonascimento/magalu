@@ -88,6 +88,30 @@
           null
         ]
       },
+      "/Users/guilherme/Projects/desafio_magalu/app/jobs/import_file_job.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          null,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/jobs/application_job.rb": {
+        "lines": [
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
       "/Users/guilherme/Projects/desafio_magalu/app/models/order.rb": {
         "lines": [
           null,
@@ -279,41 +303,8 @@
           null,
           null
         ]
-      },
-      "/Users/guilherme/Projects/desafio_magalu/app/jobs/import_file_job.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
-      "/Users/guilherme/Projects/desafio_magalu/app/jobs/application_job.rb": {
-        "lines": [
-          1,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/guilherme/Projects/desafio_magalu/app/mailers/application_mailer.rb": {
-        "lines": [
-          0,
-          0,
-          0,
-          0
-        ],
-        "branches": {}
       }
     },
-    "timestamp": 1732293847
+    "timestamp": 1732294194
   }
 }
