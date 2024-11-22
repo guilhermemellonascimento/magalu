@@ -1,0 +1,25 @@
+# Use official Ruby image
+FROM ruby:3.2
+
+# Install dependencies
+RUN apt-get update -qq && apt-get install -y \
+  nodejs \
+  yarn \
+  sqlite3 \
+  && rm -rf /var/lib/apt/lists/*
+
+# Set up the working directory
+WORKDIR /myapp
+
+# Install gems
+COPY Gemfile Gemfile.lock ./
+RUN bundle install
+
+# Copy the rest of the application files
+COPY . .
+
+# Expose port 3000 for Rails
+EXPOSE 3000
+
+# Set the default command to run the Rails server
+CMD ["rails", "server", "-b", "0.0.0.0"]

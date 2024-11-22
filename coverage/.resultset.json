@@ -1,0 +1,322 @@
+{
+  "RSpec": {
+    "coverage": {
+      "/Users/guilherme/Projects/desafio_magalu/app/helpers/api/v1/users_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/helpers/files_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/helpers/users_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/controllers/api/v1/users_controller.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          9,
+          9,
+          null,
+          null,
+          1,
+          null,
+          1,
+          9,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/models/order.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          33,
+          null,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/models/product.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/models/user.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/queries/user_query.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          13,
+          null,
+          null,
+          1,
+          13,
+          13,
+          13,
+          null,
+          13,
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          52,
+          26,
+          null,
+          null,
+          78,
+          null,
+          null,
+          1,
+          13,
+          null,
+          null,
+          1,
+          26,
+          null,
+          4,
+          null,
+          null,
+          1,
+          26,
+          null,
+          8,
+          8,
+          null,
+          8,
+          null,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/serializers/order_serializer.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          31,
+          null,
+          null,
+          1,
+          31,
+          null,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/serializers/product_serializer.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          30,
+          null,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/serializers/user_serializer.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/services/order_importer.rb": {
+        "lines": [
+          1,
+          1,
+          13,
+          null,
+          null,
+          1,
+          12,
+          22,
+          null,
+          null,
+          22,
+          null,
+          null,
+          22,
+          22,
+          22,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null,
+          1,
+          null,
+          22,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          22,
+          22,
+          null,
+          null,
+          null,
+          null,
+          1,
+          22,
+          22,
+          null,
+          null,
+          null,
+          null,
+          1,
+          22,
+          22,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/controllers/api/v1/files_controller.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/jobs/application_job.rb": {
+        "lines": [
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          0
+        ],
+        "branches": {}
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/jobs/import_file_job.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      },
+      "/Users/guilherme/Projects/desafio_magalu/app/mailers/application_mailer.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {}
+      }
+    },
+    "timestamp": 1732240511
+  }
+}
