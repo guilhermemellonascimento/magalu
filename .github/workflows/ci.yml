@@ -66,6 +66,10 @@ jobs:
             command: |
               docker pull ${{ secrets.DOCKER_IMAGE }}:latest
               docker ps -a --format '{{.Names}}' | grep -q rails-app && docker stop rails-app && docker rm rails-app
+
+              docker pull redis:alpine
+              docker run -d --name redis -p 6379:6379 redis:alpine
+
               docker run -d --name rails-app -p 3000:3000 ${{ secrets.DOCKER_IMAGE }}:latest
             host: ${{ secrets.LIGHTSAIL_IP }}
             user: ${{ secrets.LIGHTSAIL_USER }}
