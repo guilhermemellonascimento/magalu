@@ -65,7 +65,6 @@ jobs:
             mkdir -p ~/.ssh
             echo "$LIGHTSAIL_SSH_KEY" > ~/.ssh/lightsail_key.pem
             chmod 400 ~/.ssh/lightsail_key.pem
-            ssh-keyscan -t rsa ${{ secrets.LIGHTSAIL_IP }} >> ~/.ssh/known_hosts
 
         - name: Deploy to AWS Lightsail
           uses: appleboy/ssh-action@v0.1.1
