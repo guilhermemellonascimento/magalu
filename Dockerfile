@@ -22,4 +22,5 @@ COPY . .
 EXPOSE 3000
 
 # Set the default command to run the Rails server
-CMD ["rails", "rails db:prepare && server", "-b", "0.0.0.0"]
+# CMD ["rails", "rails db:prepare && server", "-b", "0.0.0.0"]
+CMD ["sh", "-c", "rails db:prepare && rails s -b 0.0.0.0"]
