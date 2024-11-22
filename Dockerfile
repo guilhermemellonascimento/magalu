@@ -21,7 +21,9 @@ COPY . .
 # Expose port 3000 for Rails
 EXPOSE 3000
 
-# Set the default command to run the Rails server
-# CMD ["rails", "server", "-b", "0.0.0.0"]
-CMD ["rails", "server", "-b", "0.0.0.0", "-p", "3000"]
+COPY /bin/docker-entrypoint.sh /usr/bin/entrypoint.sh
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["sh", "/usr/bin/entrypoint.sh"]
 
+# Set the default command to run the Rails server
+CMD ["rails", "server", "-b", "0.0.0.0"]
