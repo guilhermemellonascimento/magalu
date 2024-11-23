@@ -32,6 +32,7 @@ gem "sidekiq"
 gem 'active_model_serializers', '~> 0.8.4'
 gem 'kaminari'
 gem 'redis'
+gem 'byebug'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -54,6 +55,8 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -63,7 +66,6 @@ group :development do
   gem 'rubocop-performance'
   gem 'rubocop-rails'
   gem 'rubocop-rspec'
-  gem 'byebug'
 end
 
 group :test do

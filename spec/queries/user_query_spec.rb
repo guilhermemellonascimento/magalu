@@ -15,20 +15,20 @@ RSpec.describe UserQuery, type: :query do
   describe '#call' do
     subject { UserQuery.new(filters).call }
 
-    context 'when filtering by id' do
-      let(:filters_with_id) { filters.merge(id: 1) }
+    context 'when filtering by order id' do
+      let(:filters_with_order_id) { filters.merge(order_id: 1) }
 
-      subject { UserQuery.new(filters_with_id).call }
+      subject { UserQuery.new(filters_with_order_id).call }
 
-      it 'returns the correct user filtered by id' do
+      it 'returns the correct user filtered by order_id' do
         result = subject
 
         expect(result.count).to eq(1)
         expect(result.map(&:id)).to match_array([1])
       end
 
-      it 'returns an empty list when no user matches the id' do
-        filters_with_id[:id] = 999
+      it 'returns an empty list when no user matches the order_id' do
+        filters_with_order_id[:order_id] = 999
 
         result = subject
 

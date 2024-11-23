@@ -19,7 +19,7 @@ class UserQuery
 
   def apply_filters(query)
     filters = [
-      ->(users) { filter_by_id(users) },
+      ->(users) { filter_by_order_id(users) },
       ->(users) { filter_by_date_range(users) }
     ]
 
@@ -30,10 +30,10 @@ class UserQuery
     query.page(filters[:page]).per(filters[:per_page])
   end
 
-  def filter_by_id(users)
-    return users if filters[:id].blank?
+  def filter_by_order_id(users)
+    return users if filters[:order_id].blank?
 
-    users.joins(:orders).where(orders: { id: filters[:id] })
+    users.joins(:orders).where(orders: { id: filters[:order_id] })
   end
 
   def filter_by_date_range(users)

@@ -5,14 +5,15 @@ module Api
     class FilesController < ApplicationController
       skip_before_action :verify_authenticity_token
 
-      def upload
+      # POST /api/v1/files/import
+      def import
         if params[:file].present?
           file_path = save_file(params[:file])
           ImportFileJob.perform_later(file_path.to_s)
 
-          render json: { message: 'Arquivo recebido com sucesso!' }, status: :ok
+          render json: { message: 'File received successfully!' }, status: :ok
         else
-          render json: { error: 'Nenhum arquivo foi enviado.' }, status: :unprocessable_entity
+          render json: { error: 'No file was sent.' }, status: :unprocessable_entity
         end
       end
 

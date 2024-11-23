@@ -7,7 +7,7 @@ class OrderImporter
     File.foreach(@file_path).with_index do |line, index|
       next if line.strip.empty?
 
-      # parse the line into a hash 
+      # parse the line into a hash
       attributes = parse_line(line)
 
       # create user, order, and products
