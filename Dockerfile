@@ -1,6 +1,9 @@
 # Use official Ruby image
 FROM ruby:3.2
 
+# Set environment variables
+ENV REDIS_URL=redis://redis:6379/0
+
 # Install dependencies
 RUN apt-get update -qq && apt-get install -y \
   nodejs \
