@@ -61,6 +61,22 @@ jobs:
           ls coverage
           cat coverage/coverage.json
 
+      - name: Check SimpleCov Coverage
+        run: |
+          # Install jq (a lightweight and flexible command-line JSON processor)
+          sudo apt-get install jq
+
+          # Read the coverage percentage from the generated JSON file
+          COVERAGE=$(cat coverage/coverage.json | jq '.covered_percent')
+
+          echo "Code coverage: $COVERAGE%"
+
+          # Fail the job if coverage is not 100%
+          if [ "$COVERAGE" != "100" ]; then
+            echo "Coverage is not 100%. Failing the build."
+            exit 1
+          fi
+
   deploy:
       runs-on: ubuntu-latest
       needs: [rubocop, test]
