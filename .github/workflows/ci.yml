@@ -6,9 +6,30 @@ on:
     branches: [ main ]
 
 jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Run RuboCop
+        run: bundle exec rubocop
+        continue-on-error: false  
+
   test:
     runs-on: ubuntu-latest
-
+    needs: rubocop
     steps:
       - name: Install packages
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y google-chrome-stable curl libjemalloc2 libvips sqlite3
@@ -36,26 +57,14 @@ jobs:
         run: |
           bundle exec rspec
 
-  rubocop:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.2.2'
-
-      - name: Install dependencies
+      - name: Check SimpleCov Coverage
         run: |
-          gem install bundler
-          bundle install
-
-      - name: Run RuboCop
-        run: bundle exec rubocop
-        continue-on-error: false  
+          COVERAGE=$(ruby -r './coverage/index.html' -e "puts File.read('./coverage/index.html').match(/coverage:\s*(\d+)%/)[1]")
+          echo "Code coverage: $COVERAGE%"
+          if [ "$COVERAGE" -ne 100 ]; then
+            echo "Coverage is not 100%. Failing the build."
+            exit 1
+          fi
 
   deploy:
       runs-on: ubuntu-latest
