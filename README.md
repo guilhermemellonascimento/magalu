@@ -36,6 +36,11 @@
 - **QueryObjects**
     - Usados para encapsular consultas complexas e específicas de banco de dados, mantendo os modelos e controladores mais limpos. Ajudam a organizar e reutilizar lógica de consulta, tornando o código mais legível e fácil de testar
 
+- **SOLID Principles**
+  - Single Responsibility
+  - Open/Closed
+  - Dependency Inversion
+
 ### Workflow  
 
 ![image](https://github.com/user-attachments/assets/366f2803-74f1-4496-ae2c-4f904f57e70e)
@@ -84,6 +89,8 @@ curl -X GET http://34.205.71.232/api/v1/users
 
 ## Testes
 Os testes foram escritos com rspec e a análise da cobertura com SimpleCov
+
+[![CI](https://github.com/guilhermemellonascimento/magalu/actions/workflows/ci.yml/badge.svg)](https://github.com/guilhermemellonascimento/magalu/actions/workflows/ci.yml)
 
 ```
 bundle exec rspec
