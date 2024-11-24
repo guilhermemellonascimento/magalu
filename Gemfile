@@ -30,7 +30,7 @@ gem "solid_cable"
 gem "solid_cache"
 gem "solid_queue"
 
-gem 'active_model_serializers', '~> 0.8.4'
+gem 'active_model_serializers', '~> 0.10.14'
 gem 'byebug'
 gem 'kaminari'
 gem 'redis'
