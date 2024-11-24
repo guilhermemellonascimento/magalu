@@ -67,7 +67,7 @@ jobs:
           sudo apt-get install jq
 
           # Read the coverage percentage from the generated JSON file
-          COVERAGE=$(cat coverage/coverage.json | jq '.covered_percent')
+          COVERAGE=$(cat coverage/coverage.json | jq '.metrics.covered_percent')
 
           echo "Code coverage: $COVERAGE%"
 
