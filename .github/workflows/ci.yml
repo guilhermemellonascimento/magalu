@@ -70,7 +70,7 @@ jobs:
               docker rm redis || true
 
               docker run -d --name redis -p 6379:6379 redis:alpine
-              docker run -d --name rails-app -p 3000:3000 --link redis:redis ${{ secrets.DOCKER_IMAGE }}:latest
+              docker run -d --name rails-app -p 80:3000 --link redis:redis ${{ secrets.DOCKER_IMAGE }}:latest
             host: ${{ secrets.LIGHTSAIL_IP }}
             user: ${{ secrets.LIGHTSAIL_USER }}
             key: ${{ secrets.PRIVATE_KEY}}
