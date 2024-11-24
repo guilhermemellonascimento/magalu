@@ -58,8 +58,14 @@ jobs:
 
       - name: Check SimpleCov Coverage
         run: |
-          COVERAGE=$(ruby -r './coverage/index.html' -e "puts File.read('./coverage/index.html').match(/coverage:\s*(\d+)%/)[1]")
+          # Install jq (a lightweight and flexible command-line JSON processor)
+          sudo apt-get install jq
+
+          # Read the coverage percentage from the generated JSON file
+          COVERAGE=$(cat coverage/coverage.json | jq '.covered_percent')
           echo "Code coverage: $COVERAGE%"
+
+          # Fail the job if coverage is not 100%
           if [ "$COVERAGE" -ne 100 ]; then
             echo "Coverage is not 100%. Failing the build."
             exit 1

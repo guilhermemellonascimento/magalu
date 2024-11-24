@@ -80,4 +80,5 @@ group :test do
   gem "selenium-webdriver"
   gem 'shoulda-matchers', '~> 5.0'
   gem 'simplecov', require: false
+  gem 'simplecov-json'
 end
