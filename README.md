@@ -17,6 +17,7 @@
 - Simplecov
 - Faker
 - FactoryBot
+- dotenv
 
 **Banco de dados:**
 - sqlite3
@@ -30,10 +31,15 @@
 
 **Padrões utilizados:**
 - **ServiceObjects**
-    - São usados para organizar a lógica de negócios fora dos modelos e controladores. Eles ajudam a manter o código limpo e fácil de manter, encapsulando funcionalidades específicas em classes dedicadas
+    - Usados para organizar a lógica de negócios fora dos modelos e controladores. Ajudam a manter o código limpo e fácil de manter, encapsulando funcionalidades específicas em classes dedicadas
 
 - **QueryObjects**
-    - São usados para encapsular consultas complexas e específicas de banco de dados, mantendo os modelos e controladores mais limpos. Eles ajudam a organizar e reutilizar lógica de consulta, tornando o código mais legível e fácil de testar
+    - Usados para encapsular consultas complexas e específicas de banco de dados, mantendo os modelos e controladores mais limpos. Ajudam a organizar e reutilizar lógica de consulta, tornando o código mais legível e fácil de testar
+
+- **SOLID Principles**
+  - Single Responsibility
+  - Open/Closed
+  - Dependency Inversion
 
 ### Workflow  
 
@@ -45,8 +51,8 @@ Foi desenvolvida uma API REST para receber arquivos, processar e listar os pedid
 
 A API possui os seguintes endpoints:
 
-- Faz o upload e processa o arquivo de pedidos em background
-    - ```POST /api/v1/files/upload```
+- Importa e processa o arquivo de pedidos em background
+    - ```POST /api/v1/files/import```
 - Retorna os pedidos no formato JSON
     - ```GET /api/v1/users```
 
@@ -60,22 +66,32 @@ E paginar os pedidos:
 GET /api/v1/users?page=1&per_page=5
 ```
 
-#### Processamento dos pedidos 
-Os pedidos são processados da seguinte forma
-1. O upload do arquivo é feito
+#### Fluxo de importação
+Os pedidos são importados da seguinte forma:
+1. O upload do arquivo é feito para o diretório `/tmp`
 2. Um background job executa o serviço `ImportFileJob` que contém toda a lógica de processamento
+3. Os pedidos são armazenados no banco de dados
 
-## Como testar :)
+## Como testar
 
-O deplo já foi feito no AWS Lightsail e está disponível através de um IP público.
-Podemos utilizar curl para fazer os testes:
+O deploy já foi feito no AWS Lightsail e está disponível através de um IP público.
+Podemos utilizar o `curl` para fazer os testes:
 
-- Processar arquivo de pedidos
+- Importar/Processar arquivo de pedidos
 ```
-curl -X POST -F "file=@<PATH_PARA_TXT_COM_PEDIDOS>" http://34.205.71.232:3000/api/v1/files/upload
+curl -X POST -F "file=@/~/Desktop/orders.txt" http://34.205.71.232/api/v1/files/import
 ```
 
 - Listar pedidos no formato JSON
 ```
-curl -X GET http://34.205.71.232:3000/api/v1/users
+curl -X GET http://34.205.71.232/api/v1/users
+```
+
+## Testes
+Os testes foram escritos com rspec e a análise da cobertura com SimpleCov
+
+[![CI](https://github.com/guilhermemellonascimento/magalu/actions/workflows/ci.yml/badge.svg)](https://github.com/guilhermemellonascimento/magalu/actions/workflows/ci.yml)
+
+```
+bundle exec rspec
 ```
