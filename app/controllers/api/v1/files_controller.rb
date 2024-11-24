@@ -9,7 +9,7 @@ module Api
       def import
         if params[:file].present?
           file_path = save_file(params[:file])
-          ImportFileJob.perform_later(file_path.to_s)
+          ProcessFileJob.perform_later(file_path.to_s)
 
           render json: { message: 'File received successfully!' }, status: :ok
         else
@@ -21,7 +21,7 @@ module Api
 
       def save_file(file)
         file_path = Rails.root.join('tmp', file.original_filename)
-        File.open(file_path, 'wb') { |f| f.write(file.read) }
+        File.binwrite(file_path, file.read)
         file_path
       end
     end

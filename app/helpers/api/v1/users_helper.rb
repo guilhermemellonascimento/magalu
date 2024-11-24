@@ -1,2 +1,8 @@
-module Api::V1::UsersHelper
+# frozen_string_literal: true
+
+module Api
+  module V1
+    module UsersHelper
+    end
+  end
 end

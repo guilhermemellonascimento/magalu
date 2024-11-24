@@ -38,22 +38,22 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
 
       it 'includes orders as an array for the first user' do
-        json_response = JSON.parse(response.body)
+        json_response = response.parsed_body
         expect(json_response[0]['orders']).to be_an(Array)
       end
 
       it 'includes orders as an array for the second user' do
-        json_response = JSON.parse(response.body)
+        json_response = response.parsed_body
         expect(json_response[1]['orders']).to be_an(Array)
       end
 
       it 'includes products as an array for the first order of the first user' do
-        json_response = JSON.parse(response.body)
+        json_response = response.parsed_body
         expect(json_response[0]['orders'][0]['products']).to be_an(Array)
       end
 
       it 'includes products as an array for the first order of the second user' do
-        json_response = JSON.parse(response.body)
+        json_response = response.parsed_body
         expect(json_response[1]['orders'][0]['products']).to be_an(Array)
       end
     end
@@ -64,13 +64,13 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       end
 
       it 'returns the correct number of users on the current page' do
-        json_response = JSON.parse(response.body)
+        json_response = response.parsed_body
         expect(json_response.count).to eq(2)
       end
 
       it 'returns the correct user IDs for the current page' do
-        json_response = JSON.parse(response.body)
-        user_ids = json_response.map { |user| user['user_id'] }
+        json_response = response.parsed_body
+        user_ids = json_response.pluck('user_id')
         expect(user_ids).to contain_exactly(1, 2)
       end
     end

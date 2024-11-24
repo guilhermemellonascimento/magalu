@@ -9,7 +9,7 @@ RSpec.describe Api::V1::FilesController, type: :controller do
 
     context 'when a file is imported' do
       before do
-        allow(ImportFileJob).to receive(:perform_later)
+        allow(ProcessFileJob).to receive(:perform_later)
 
         post :import, params: { file: file }
       end
@@ -18,8 +18,8 @@ RSpec.describe Api::V1::FilesController, type: :controller do
         expect(File.exist?(file_path)).to be true
       end
 
-      it 'enqueues the ImportFileJob with the correct file path' do
-        expect(ImportFileJob).to have_received(:perform_later).with(file_path.to_s)
+      it 'enqueues the ProcessFileJob with the correct file path' do
+        expect(ProcessFileJob).to have_received(:perform_later).with(file_path.to_s)
       end
 
       it 'returns a response with HTTP status ok' do

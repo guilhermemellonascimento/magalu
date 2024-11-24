@@ -17,3 +17,6 @@ RSpec/IndexedLet:
 AllCops:
   SuggestExtensions: false
   NewCops: enable
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
