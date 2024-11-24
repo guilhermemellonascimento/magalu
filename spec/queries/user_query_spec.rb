@@ -1,6 +1,5 @@
-# # frozen_string_literal: true
+# frozen_string_literal: true
 
-# # spec/queries/user_query_spec.rb
 # require 'rails_helper'
 
 # RSpec.describe UserQuery, type: :query do
